@@ -95,6 +95,10 @@
 					<th>Payment Status</th>
 					<th>Payment TimeStamp</th>
 				</tr>
+
+				<c:set var="totalPurchaseAmt" value="0"></c:set>
+				<c:set var="totalQuantityPurchased" value="0"></c:set>
+
 				<c:forEach var="var" items="${productList}">
 					<tr>
 						<td><c:out value="${index=index+1}"></c:out></td>
@@ -108,9 +112,27 @@
 						<td>${var.supplierId}</td>
 						<td>${var.payment_status}</td>
 						<td>${var.purchase_timestamp}</td>
+						<input type="hidden" value="${totalPurchaseAmt = totalPurchaseAmt + var.mrp}">
+						<input type="hidden" value="${totalQuantityPurchased = totalQuantityPurchased + var.quantity}">
 					</tr>
 				</c:forEach>
-				
+				<tr>
+					<th colspan="2">Total</th>
+					<td></td>
+					<td></td>
+					<th>
+						<c:out value="Rs.${totalPurchaseAmt}"></c:out>
+					</th>
+					<th>
+					</th>
+					<th>
+						<c:out value="${totalQuantityPurchased}"></c:out>
+					</th>
+					<td></td>
+					<td></td>
+					<td></td>
+					<th></th>
+				</tr>
 			</table>
 		</div>
 	</c:if>

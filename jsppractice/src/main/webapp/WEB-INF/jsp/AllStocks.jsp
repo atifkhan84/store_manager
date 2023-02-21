@@ -113,6 +113,10 @@
 					<th>Quantity</th>
 					<th>Datetime</th>
 				</tr>
+
+				<c:set var="amtWorthInStock" value="0"></c:set>
+				<c:set var="totalQuantityInStock" value="0"></c:set>
+
 				<c:forEach var="var" items="${stockList}">
 					<tr>
 						<td><c:out value="${i=i+1}"></c:out></td>
@@ -123,9 +127,22 @@
 						<td>${var.size}</td>
 						<td>${var.quantity}</td>
 						<td>${var.stockTimestamp}</td>
+						<input type="hidden" value="${totalQuantityInStock = totalQuantityInStock + var.quantity}">
 					</tr>
 				</c:forEach>
-				
+				<tr>
+					<th colspan="2">Total</th>
+					<td></td>
+					<th>
+						<!-- <c:out value="Rs.${totalPurchaseAmt}"></c:out> -->
+					</th>
+					<th>
+						
+					</th>
+					<td></td>
+					<th><c:out value="${totalQuantityInStock}"></c:out></th>
+					<td></td>
+				</tr>
 			</table>
 		</div>
 	</c:if>
