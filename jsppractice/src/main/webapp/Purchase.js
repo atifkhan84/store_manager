@@ -66,3 +66,6 @@ function displayActualPrice(){
     document.getElementById("actualPrice").value = Math.round(document.getElementsByName("mrp")[0].value*(1-document.getElementsByName("discount")[0].value/100)*100)/100
 }
 
+
+function displayTotalQuantity(){
+}

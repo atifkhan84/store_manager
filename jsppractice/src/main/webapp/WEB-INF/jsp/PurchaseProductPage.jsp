@@ -129,9 +129,7 @@
 		font-style: italic;
 	}
 	.addOrRemove > button{
-		margin-top: 10px;
 		width: 30px;
-		/* padding: 0 10px; */
 		font-weight: bold;
 		font-size: 20px;
 		background-color: #0d6efd;
@@ -287,6 +285,9 @@
 								<td class="quantity"><form:input type="number" path="quantity" value="1" placeholder="qty" required="required" min="1"/></td>
 								<td class="quantity"><form:input type="number" path="quantity" value="1" placeholder="qty" required="required" min="1"/></td>
 								<td class="quantity"><form:input type="number" path="quantity" value="1" placeholder="qty"  required="required" min="1"/></td>
+							</tr>
+							<tr>
+								<th rowspan="2">Total Quantity</th><th>10</th>
 							</tr>
 						</table>
 						<div id="addOrRemoveContainer">
