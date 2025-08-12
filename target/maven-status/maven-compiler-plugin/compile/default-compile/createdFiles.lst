@@ -1,0 +1,15 @@
+com\atif\jsppractice\service\SalesService.class
+com\atif\jsppractice\controller\ProductController.class
+com\atif\jsppractice\service\StockService.class
+com\atif\jsppractice\entity\ProductEntity.class
+com\atif\jsppractice\entity\SalesEntity.class
+com\atif\jsppractice\entity\StockEntity.class
+com\atif\jsppractice\bean\BulkProductBean.class
+com\atif\jsppractice\entity\Stock.class
+com\atif\jsppractice\JsppracticeApplication.class
+com\atif\jsppractice\repository\StockRepository.class
+com\atif\jsppractice\bean\Prac.class
+com\atif\jsppractice\service\ProductService.class
+com\atif\jsppractice\bean\ProductBean.class
+com\atif\jsppractice\repository\ProductRepository.class
+com\atif\jsppractice\repository\SalesRepository.class
