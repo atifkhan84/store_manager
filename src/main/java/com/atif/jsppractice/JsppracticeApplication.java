@@ -8,10 +8,12 @@ import org.springframework.boot.web.servlet.support.SpringBootServletInitializer
 
 @SpringBootApplication
 public class JsppracticeApplication extends SpringBootServletInitializer {
+	
 	@Override
 	 protected SpringApplicationBuilder configure(SpringApplicationBuilder application) {
 	  return application.sources(JsppracticeApplication.class);
 	 }
+	
 	public static void main(String[] args) {
 		SpringApplication.run(JsppracticeApplication.class, args);
 	}
