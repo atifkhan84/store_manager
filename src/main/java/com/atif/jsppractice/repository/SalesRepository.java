@@ -14,7 +14,8 @@ import com.atif.jsppractice.entity.SalesEntity;
 public interface SalesRepository extends CrudRepository<SalesEntity, String> {
 	
 	// earliar it was <SalesEntity, Integer> but now i(@Shadab) changed to <SalesEntity, String> 
-//	@Query(value="SELECT * FROM Sales s WHERE date(sales_timestamp) = :date", nativeQuery=true)
+
+	//	@Query(value="SELECT * FROM Sales s WHERE date(sales_timestamp) = :date", nativeQuery=true)
 //	Both the query works
 	
 	@Query("SELECT s FROM SalesEntity s WHERE date(salestimestamp) = :date")
