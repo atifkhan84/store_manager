@@ -119,7 +119,8 @@ public class ProductController {
 		Set<String> brandList = new HashSet<String>();
 		Set<String> description = new HashSet<String>();
 		
-		if(listOfProductsAvailableInStock != null) {
+		
+		if(listOfProductsAvailableInStock != null && !listOfProductsAvailableInStock.isEmpty()) {//change 1
 		for (int i=0; i<listOfProductsAvailableInStock.size(); i++) {
 			productIdAndBrand.put(listOfProductsAvailableInStock.get(i).getProductId(), listOfProductsAvailableInStock.get(i).getBrand());
 			brandList.add(listOfProductsAvailableInStock.get(i).getBrand());
