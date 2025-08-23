@@ -1,6 +1,8 @@
 package com.atif.jsppractice.service;
 
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -32,6 +34,12 @@ public class ProductService {
 	
 	public List<ProductEntity> getProductPurchaseInDescOrderByDate(){
 		return productRepository.getProductPurchaseInDescOrderByDate();
+	}
+
+	public Map<String, String> getProductIdAndBrand() {
+		// TODO Auto-generated method stub
+		Map<String, String> productIdAndBrand = new HashMap<String, String>();
+		return null;
 	}
 }
   	

@@ -18,6 +18,6 @@ public interface ProductRepository extends CrudRepository<ProductEntity, Integer
 	public ProductEntity findProductByProductId(@Param("productId") String productId);
 	
 //	@Query(value="SELECT * FROM Product_purchase GROUP BY product_id", nativeQuery=true) This also works
-	@Query("SELECT p FROM ProductEntity p GROUP BY p.productId")
+	@Query("SELECT p FROM ProductEntity p")
 	public List<ProductEntity> getAllProductDetails();
 }

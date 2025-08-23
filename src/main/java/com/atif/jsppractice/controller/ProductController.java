@@ -50,7 +50,7 @@ public class ProductController {
 	}
 //	--------------------PRACTICE-------------------------------------------------------------------------------------------------------
 	@GetMapping("/hii")
-	public String hello(@RequestParam(value = "name", defaultValue = "World", required = true) String name, Model model) {
+	public String hello(@RequestParam(defaultValue = "World", required = true) String name, Model model) {
 		model.addAttribute("name", name);
 		return "hello";
 	}
@@ -125,7 +125,7 @@ public class ProductController {
 			productIdAndBrand.put(listOfProductsAvailableInStock.get(i).getProductId(), listOfProductsAvailableInStock.get(i).getBrand());
 			brandList.add(listOfProductsAvailableInStock.get(i).getBrand());
 			description.add(listOfProductsAvailableInStock.get(i).getDescription());
-		}
+			}
 		}
 
 		modelAndView.addObject("productIdList", productIdAndBrand);
@@ -140,6 +140,8 @@ public class ProductController {
 		modelAndView.addObject("salesEntity", new SalesEntity());
 		return modelAndView;
 	}
+	
+	
 	@PostMapping("/getDetails")
 	public ModelAndView getDetails(String productId) {
 		
@@ -162,7 +164,7 @@ public class ProductController {
 	}
 	
 	@PostMapping("/sellProduct")
-	public ModelAndView sellProduct(@Valid @ModelAttribute("salesEntity") SalesEntity salesEntity){
+	public ModelAndView sellProduct(@Valid @ModelAttribute SalesEntity salesEntity){
 		
 		salesService.sell(salesEntity);
 		
@@ -239,7 +241,7 @@ public class ProductController {
 	
 	
 	@PostMapping("/purchaseProduct")
-	public ModelAndView purchaseProduct(@Valid @ModelAttribute("bulkProductEntity") BulkProductBean bulkProductEntity){
+	public ModelAndView purchaseProduct(@Valid @ModelAttribute BulkProductBean bulkProductEntity){
 		
 		
 		for (int i = 0; i<bulkProductEntity.getSize().size(); i++) {
@@ -299,7 +301,7 @@ public class ProductController {
 	}
 	
 	@GetMapping("/stockBasedOn")
-	public ModelAndView getAllStockBasedOnType(@RequestParam(value="type") String type){
+	public ModelAndView getAllStockBasedOnType(@RequestParam String type){
 		
 		List<StockEntity> list = stockService.getAllAvailableProductsByType(type);
 		ModelAndView modelAndView = new ModelAndView();
@@ -308,7 +310,7 @@ public class ProductController {
 		return modelAndView;
 	}
 	@GetMapping("/stockBasedOnBrand")
-	public ModelAndView getAllStockBasedOnBrand(@RequestParam(value="brand") String brand){
+	public ModelAndView getAllStockBasedOnBrand(@RequestParam String brand){
 		
 		List<StockEntity> list = stockService.getAllAvailableProductsByBrand(brand);
 		ModelAndView modelAndView = new ModelAndView();

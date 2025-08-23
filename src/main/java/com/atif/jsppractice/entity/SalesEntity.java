@@ -4,10 +4,19 @@ import java.sql.Timestamp;
 
 import org.hibernate.annotations.CreationTimestamp;
 
-import jakarta.persistence.*;
+import jakarta.persistence.Column;
+import jakarta.persistence.Entity;
+import jakarta.persistence.GeneratedValue;
+import jakarta.persistence.GenerationType;
+import jakarta.persistence.Id;
+import jakarta.persistence.Table;
+import jakarta.persistence.Temporal;
+import jakarta.persistence.TemporalType;
+import lombok.Data;
 
 @Entity
 @Table(name = "sales")
+@Data
 public class SalesEntity {
     @Id
     @GeneratedValue(strategy=GenerationType.IDENTITY)
@@ -26,84 +35,5 @@ public class SalesEntity {
     @Column(name="sales_timestamp")
 	private Timestamp salestimestamp;
     
-    public Timestamp getSalestimestamp() {
-		return salestimestamp;
-	}
-
-	public void setSalestimestamp(Timestamp salestimestamp) {
-		this.salestimestamp = salestimestamp;
-	}
-
-	public String getSalesId() {
-		return salesId;
-	}
-
-	public void setSalesId(String salesId) {
-		this.salesId = salesId;
-	}
-
-	public double getSellingPrice() {
-		return sellingPrice;
-	}
-
-	public void setSellingPrice(float sellingPrice) {
-		this.sellingPrice = sellingPrice;
-	}
-
-	public double getProfitLoss() {
-		return profitLoss;
-	}
-
-	public void setProfitLoss(float profitLoss) {
-		this.profitLoss = profitLoss;
-	}
-
-	public String getPaymentMode() {
-		return paymentMode;
-	}
-
-	public void setPaymentMode(String paymentMode) {
-		this.paymentMode = paymentMode;
-	}  
-    
-	public Integer getQuantity() {
-		return quantity;
-	}
-
-	public void setQuantity(Integer quantity) {
-		this.quantity = quantity;
-	}
-
-    public String getProductId() {
-        return productId;
-    }
-
-    public void setProductId(String productId) {
-        this.productId = productId;
-    }
-
-    public String getBrand() {
-        return brand;
-    }
-
-    public void setBrand(String brand) {
-        this.brand = brand;
-    }
-
-    public Integer getSize() {
-        return size;
-    }
-
-    public void setSize(Integer size) {
-        this.size = size;
-    }
-
-    public String getDescription() {
-        return description;
-    }
-
-    public void setDescription(String description) {
-        this.description = description;
-    }
-
+  
 }
