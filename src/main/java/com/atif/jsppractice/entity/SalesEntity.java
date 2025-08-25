@@ -19,7 +19,7 @@ import lombok.Data;
 @Data
 public class SalesEntity {
     @Id
-    @GeneratedValue(strategy=GenerationType.IDENTITY)
+    @GeneratedValue(strategy=GenerationType.AUTO)//earliar it was IDENTITY i changed it to AUTO
     private String salesId;
     private String productId;
     private String brand;

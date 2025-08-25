@@ -39,12 +39,4 @@ public class ProductEntity {
     @CreationTimestamp
 	private Timestamp purchase_timestamp;
 
-   	@Override
-	public String toString() {
-		return "ProductEntity [id=" + id + ", productId=" + productId + ", brand=" + brand + ", discount=" + discount
-				+ ", mrp=" + mrp + ", size=" + size + ", description=" + description + ", supplierId=" + supplierId
-				+ ", payment_status=" + payment_status + ", quantity=" + quantity + ", purchase_timestamp="
-				+ purchase_timestamp + "]";
-	}
-    
 }

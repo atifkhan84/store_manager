@@ -32,9 +32,11 @@ import com.atif.jsppractice.service.SalesService;
 import com.atif.jsppractice.service.StockService;
 
 import jakarta.validation.Valid;
+import lombok.extern.slf4j.Slf4j;
 
 
 @Controller
+@Slf4j
 public class ProductController {
 	
 	@Autowired
