@@ -13,7 +13,7 @@
 		display: flex;
 		flex-wrap: wrap;
 		justify-content: center;
-		background-color: #56d5c8;
+		background-color: lightgray;
 		align-content: center;
 		flex-direction: column;
 		align-items: center;

@@ -110,11 +110,13 @@ public class ProductController {
 	
 	@GetMapping("/sellProduct")
 	public ModelAndView sellProductPage(){
-
+		log.info("we are inside sales page");
 		ModelAndView modelAndView = new ModelAndView();
 		
 		//To populate the form with predefined values
 		List<StockEntity> listOfProductsAvailableInStock = stockService.getAllAvailableProducts();
+		//for debugging purpose
+		listOfProductsAvailableInStock.stream().forEach( l-> System.out.println(l));
 		Collections.reverse(listOfProductsAvailableInStock);	
 		
 		Map<String, String> productIdAndBrand = new HashMap<String, String>();
@@ -127,7 +129,11 @@ public class ProductController {
 			productIdAndBrand.put(listOfProductsAvailableInStock.get(i).getProductId(), listOfProductsAvailableInStock.get(i).getBrand());
 			brandList.add(listOfProductsAvailableInStock.get(i).getBrand());
 			description.add(listOfProductsAvailableInStock.get(i).getDescription());
+			modelAndView.addObject("productDetailExist", true);
 			}
+		}
+		else {
+			modelAndView.addObject("productDetailExist", false);
 		}
 
 		modelAndView.addObject("productIdList", productIdAndBrand);
@@ -137,7 +143,7 @@ public class ProductController {
 		
 		modelAndView.setViewName("SellProductPage");
 //		modelAndView.addObject("productsAvailable", listOfProductsAvailableInStock);
-		modelAndView.addObject("productDetailExist", true);
+		
 		
 		modelAndView.addObject("salesEntity", new SalesEntity());
 		return modelAndView;
@@ -145,7 +151,7 @@ public class ProductController {
 	
 	
 	@PostMapping("/getDetails")
-	public ModelAndView getDetails(String productId) {
+	public ModelAndView getDetails( String productId) {
 		
 		List<StockEntity> productsInStock = stockService.getStockAvailableByProductId(productId);
 		
