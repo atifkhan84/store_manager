@@ -14,6 +14,7 @@ public class Stock implements Serializable{
 	private String productId;
 	private String brand;
 	private Integer size;
+	
 	public String getProductId() {
 		return productId;
 	}

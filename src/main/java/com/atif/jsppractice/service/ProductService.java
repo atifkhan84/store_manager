@@ -25,7 +25,8 @@ public class ProductService {
 		return (List<ProductEntity>) productRepository.findAll();
 	}
 	public List<ProductEntity> getAllProductDetails(){
-		return productRepository.getAllProductDetails();
+//		return productRepository.getAllProductDetails();
+		return productRepository.findAll();
 	}
 	
 	public ProductEntity addProductPurchase(ProductEntity productEntity) {
