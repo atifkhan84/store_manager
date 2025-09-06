@@ -15,7 +15,7 @@ public class StockService {
 	StockRepository stockRepository;
 	
 	public List<StockEntity> getStockByProductId(String productId) {
-		return stockRepository.findByProductId(productId);
+		 return stockRepository.findByProductId(productId);
 	}
 	
 	public StockEntity addToStock(StockEntity stockEntity) {
@@ -56,6 +56,58 @@ public class StockService {
 	public List<List<String>> getStockGroupedBy(){
 		return stockRepository.getStockGroupedBy();
 	}
+	/*
+	
+	Your method `getStockByProductId` has a few issues. Here's a corrected and improved version of the code, followed by an explanation:
+
+---
+
+### ✅ **Corrected Java Code**
+
+```java
+public StockEntity getStockByProductId(String productId) {
+    return stockRepository.findById(Integer.parseInt(productId))
+            .orElseThrow(() -> new RuntimeException("Bad Product_ID: " + productId));
+}
+```
+
+---
+
+### 🔍 **Issues in Your Original Code**
+
+1. ❌ **Missing `return` statement**
+   Your method doesn't return anything, even though its return type is `StockEntity`.
+
+2. ❌ **Incorrect method name `orThrow`**
+   Java's `Optional` class does not have a method called `orThrow()`. The correct method is `orElseThrow()`.
+
+3. ❌ **Incorrect exception instantiation**
+   You wrote `RuntimeException("Bad Product_ID")` without the `new` keyword.
+
+4. ⚠️ **Risk of `NumberFormatException`**
+   `Integer.parseInt(productId)` will throw a `NumberFormatException` if the input is not a valid integer. You might want to handle that.
+
+---
+
+### 🛡️ **Optional: More Robust Version with Error Handling**
+
+```java
+public StockEntity getStockByProductId(String productId) {
+    try {
+        int id = Integer.parseInt(productId);
+        return stockRepository.findById(id)
+                .orElseThrow(() -> new RuntimeException("Stock not found for productId: " + productId));
+    } catch (NumberFormatException e) {
+        throw new IllegalArgumentException("Invalid productId format: " + productId, e);
+    }
+}
+```
+
+
+	
+	
+	*/
+	
 }
 
 

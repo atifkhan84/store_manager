@@ -1,6 +1,4 @@
 package com.atif.jsppractice.repository;
-import com.atif.jsppractice.entity.Stock;
-
 import java.util.List;
 
 import org.springframework.data.jpa.repository.Query;
@@ -9,9 +7,10 @@ import org.springframework.data.repository.query.Param;
 import org.springframework.stereotype.Repository;
 
 import com.atif.jsppractice.entity.StockEntity;
+import com.atif.jsppractice.entity.StockId;
 
 @Repository
-public interface StockRepository extends CrudRepository<StockEntity, Stock>{
+public interface StockRepository extends CrudRepository<StockEntity, StockId>{//earlier it was Stock now i changed to Integer
 	
 //	@Query("SELECT s FROM StockEntity s ORDER BY stockTimestamp")
 //	public List<StockEntity> findAll();
@@ -25,7 +24,7 @@ public interface StockRepository extends CrudRepository<StockEntity, Stock>{
 	@Query(value="select * from stock where instr(concat(brand,product_id), lower(:brand))", nativeQuery = true)
 	public List<StockEntity> getAllAvailableProductsByBrand(@Param("brand") String brand);
 	
-	public List<StockEntity> findByProductId(String productId);
+	public List<StockEntity> findByProductId(String productId); //to be removed in future
 	
 	@Query("SELECT s FROM StockEntity s WHERE s.quantity>0 AND s.productId =:productId")
 	public List<StockEntity> getStockAvailableByProductId(@Param("productId") String productId);
@@ -38,4 +37,5 @@ public interface StockRepository extends CrudRepository<StockEntity, Stock>{
 	
 	@Query(value="SELECT product_id, brand, group_concat(size, ':', quantity) FROM stock GROUP BY product_id, brand ORDER BY sum(quantity) DESC", nativeQuery=true)
 	public List<List<String>> getStockGroupedBy();
+	
 }

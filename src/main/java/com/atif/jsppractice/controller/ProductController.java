@@ -72,6 +72,7 @@ public class ProductController {
 		
 		return modelAndView;
 	}
+	
 	@PostMapping("/practice")
 	public void doThis(@ModelAttribute("pra") Prac prac) {
 	}
@@ -208,7 +209,7 @@ public class ProductController {
 	public ModelAndView purchaseProductPage() {
 		
 		//To fill the form
-		List<ProductEntity> list = productService.getAllProductDetails();
+		List<ProductEntity> list = productService.getAllProducts();
 		Set<String> brandList = new HashSet<String>();
 		Set<String> descriptionList = new HashSet<String>();
 		Set<Float> discountList = new HashSet<Float>();

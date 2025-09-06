@@ -18,17 +18,13 @@ public class ProductService {
 	private ProductRepository productRepository;
 	
 	public ProductEntity getProductByProductId(String productId) {
-		return productRepository.findProductByProductId(productId);
+		return productRepository.findById(Integer.parseInt(productId)).orElseThrow(()-> new RuntimeException("Bad Product_ID"));
 	}
 	
 	public List<ProductEntity> getAllProducts(){
-		return (List<ProductEntity>) productRepository.findAll();
+		return  productRepository.findAll();
 	}
-	public List<ProductEntity> getAllProductDetails(){
-//		return productRepository.getAllProductDetails();
-		return productRepository.findAll();
-	}
-	
+
 	public ProductEntity addProductPurchase(ProductEntity productEntity) {
 		return productRepository.save(productEntity);
 	}
@@ -38,7 +34,6 @@ public class ProductService {
 	}
 
 	public Map<String, String> getProductIdAndBrand() {
-		// TODO Auto-generated method stub
 		Map<String, String> productIdAndBrand = new HashMap<String, String>();
 		return null;
 	}

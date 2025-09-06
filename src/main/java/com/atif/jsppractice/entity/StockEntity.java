@@ -9,7 +9,7 @@ import jakarta.persistence.*;
 @lombok.Data
 @Entity
 @Table(name = "stock")
-@IdClass(Stock.class)  //@IdClass is used when an entity has a composite primary key
+@IdClass(StockId.class)  //@IdClass is used when an entity has a composite primary key
 public class StockEntity {
 	
 	@Id
