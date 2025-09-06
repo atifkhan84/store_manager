@@ -1,6 +1,7 @@
 package com.atif.jsppractice.service;
 
 import java.util.List;
+import java.util.stream.StreamSupport;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -15,7 +16,7 @@ public class StockService {
 	StockRepository stockRepository;
 	
 	public List<StockEntity> getStockByProductId(String productId) {
-		 return stockRepository.findByProductId(productId);
+        return this.stockRepository.findByProductId(productId);
 	}
 	
 	public StockEntity addToStock(StockEntity stockEntity) {
@@ -23,12 +24,11 @@ public class StockService {
 	}
 	
 	public List<StockEntity> getAllStock(){
-		return (List<StockEntity>) stockRepository.findAll();
+		return stockRepository.findAll();
 	}
 	
-	
 	public List<StockEntity> getAllAvailableProducts(){
-		return stockRepository.getAllAvailableProducts();
+		return stockRepository.findAll();
 	}
 	
 	public List<StockEntity> getStockAvailableByProductId(String productId){

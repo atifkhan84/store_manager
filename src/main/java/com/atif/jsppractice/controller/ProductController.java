@@ -154,7 +154,7 @@ public class ProductController {
 	@PostMapping("/getDetails")
 	public ModelAndView getDetails( String productId) {
 		
-		List<StockEntity> productsInStock = stockService.getStockAvailableByProductId(productId);
+		List<StockEntity> productsInStock = stockService.getStockByProductId(productId);
 		
 		ProductEntity productEntity = productService.getProductByProductId(productId);
 		

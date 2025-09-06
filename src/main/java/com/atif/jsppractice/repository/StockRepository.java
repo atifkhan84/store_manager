@@ -2,7 +2,7 @@ package com.atif.jsppractice.repository;
 import java.util.List;
 
 import org.springframework.data.jpa.repository.Query;
-import org.springframework.data.repository.CrudRepository;
+import org.springframework.data.repository.ListCrudRepository;
 import org.springframework.data.repository.query.Param;
 import org.springframework.stereotype.Repository;
 
@@ -10,7 +10,7 @@ import com.atif.jsppractice.entity.StockEntity;
 import com.atif.jsppractice.entity.StockId;
 
 @Repository
-public interface StockRepository extends CrudRepository<StockEntity, StockId>{
+public interface StockRepository extends ListCrudRepository<StockEntity, StockId>{
 	
 //	@Query("SELECT s FROM StockEntity s ORDER BY stockTimestamp")
 //	public List<StockEntity> findAll();
