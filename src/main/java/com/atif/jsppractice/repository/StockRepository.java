@@ -10,7 +10,7 @@ import com.atif.jsppractice.entity.StockEntity;
 import com.atif.jsppractice.entity.StockId;
 
 @Repository
-public interface StockRepository extends CrudRepository<StockEntity, StockId>{//earlier it was Stock now i changed to Integer
+public interface StockRepository extends CrudRepository<StockEntity, StockId>{
 	
 //	@Query("SELECT s FROM StockEntity s ORDER BY stockTimestamp")
 //	public List<StockEntity> findAll();
