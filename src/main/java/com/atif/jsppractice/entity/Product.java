@@ -4,51 +4,48 @@ import java.time.LocalDateTime;
 
 import org.hibernate.annotations.CreationTimestamp;
 import org.hibernate.annotations.UpdateTimestamp;
+import org.springframework.data.annotation.Transient;
 
+import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
+import jakarta.persistence.Id;
 import jakarta.persistence.SequenceGenerator;
+import jakarta.validation.constraints.NotBlank;
 
 @Entity
 //prodcut is only foowtare for my shop
+//later add validations
+//later i will change product id to string with abbriviation of brand name eg. ADD001
 public class Product {
-	//later i will change product id to string with abbriviation of brand name eg. ADD001
 	
-	@jakarta.persistence.Id
-	//doubt if "MySQL supports sequences directly or not."
-	@SequenceGenerator(name = "prod_seq", sequenceName = "prod_sequence", allocationSize = 1, initialValue = 1000)
+	@Id
+	@SequenceGenerator(name = "prod_seq", sequenceName = "PROD_SEQ_01", allocationSize = 1, initialValue = 1000)
 	@GeneratedValue(generator = "prod_seq", strategy = GenerationType.SEQUENCE)
 	private Integer id; //for mySql @GeneratedValue(strategy = GenerationType.IDENTITY)
 	
-	//later add validations
+	@Column(name = "PRODUCT_NAME", length = 100, nullable = false)
+	@NotBlank(message = "Product name cannot be blank")
 	private String productName;
+	
+	@Column(name = "PRODUCT_BRAND_NAME", length = 50, nullable = false)
+	@NotBlank(message = "Product brand name cannot be blank")
 	private String productBrandName;
 	
-	//give proper column name 
+	@Column(name = "PRODUCT_MRP", nullable = false, precision = 10, scale = 2)
 	private Float productMrp; //⚠️ Float is not precise for money (binary floating point leads to rounding errors).
 //	or @DecimalMin(value = "0.0", inclusive = false)
 //	private BigDecimal productMrp;
 
 	//give proper column name eg. product_CP
-	private Float productCostPrice;
+	@Column(name = "PRODUCT_CP", nullable = false, precision = 10, scale = 2)
+	private Float productCP;
 	
 	
-	//should i add max-profit-margin possible or should i calculate from MRP- CP
-	//✅ Best Practice: Don’t store something that can be calculated.
-	//Instead, add a getter:
-	/*
-	 
-	    @Transient // Not stored in DB
-		public BigDecimal getProfitMargin() {
-		    if (productMrp != null && productCostPrice != null) {
-		        return productMrp.subtract(productCostPrice);
-		    }
-		    return BigDecimal.ZERO;
-		}
-
-	 
-	 */
+	@Transient//doubt about which package to use spring or jakarta
+	@Column(name = "PRODUCT_PROFIT_MARGIN", nullable = false, precision = 10, scale = 2)
+	private Float productProfitMargin = this.productMrp - this.productCP;
 	
 	
 //	@Enumerated(EnumType.STRING) // Stores the enum name (e.g., "SNEAKERS") in the DB
